@@ -12,7 +12,7 @@ ShotAPI is a fast and reliable screenshot capture API, built on top of Pyppeteer
 
 To capture a screenshot, send a `POST` request to the API's endpoint.
 
-```curl
+```bash
 POST https://shotapi.arshadyaseen.com
 ```
 ### Request Body Parameters
@@ -31,7 +31,7 @@ For `cloudinary_url` format, additional parameters are required:
 
 Using `base64` format:
 
-```curl
+```bash
 curl -X 'POST' \
   'https://shotapi.arshadyaseen.com' \
   -H 'Content-Type: application/json' \
@@ -40,7 +40,7 @@ curl -X 'POST' \
 
 Using `cloudinary_url` format:
 
-```curl
+```bash
 curl -X 'POST' \
   'https://shotapi.arshadyaseen.com' \
   -H 'Content-Type: application/json' \
