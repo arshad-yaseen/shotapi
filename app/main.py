@@ -1,11 +1,19 @@
 from fastapi import FastAPI
-from app.api.endpoints import take
-from fastapi import APIRouter
+from fastapi import HTTPException, Body
+from app.models.payload import ScreenshotRequest
+from app.services.screenshot_service import process_screenshot
 
 app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {'message': 'Hello from ShotAPI!'}
+    return {'message': 'Hello from ShotAPI!!!'}
 
-app.include_router(take.router)
+@app.post("/")
+async def get_screenshot(request: ScreenshotRequest = Body(...)):
+    try:
+        return await process_screenshot(request)
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
