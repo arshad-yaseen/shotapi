@@ -4,3 +4,10 @@ pyppeteer
 cloudinary
 python-dotenv
 selenium
+pytest
+requests
+validators
+black
+mypy
+flake8
+bandit

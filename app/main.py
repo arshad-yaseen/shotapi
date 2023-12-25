@@ -5,9 +5,11 @@ from app.services.screenshot_service import process_screenshot
 
 app = FastAPI()
 
+
 @app.get("/")
 async def root():
-    return {'message': 'Hello from ShotAPI!!!'}
+    return {"message": "Hello from ShotAPI!!!"}
+
 
 @app.post("/")
 async def get_screenshot(request: ScreenshotRequest = Body(...)):

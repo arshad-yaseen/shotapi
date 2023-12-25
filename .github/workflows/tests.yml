@@ -1,0 +1,24 @@
+name: Test API
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+
+    - name: Start Server
+      run: |
+        ./start.sh &
+        sleep 10
+
+    - name: Run Tests
+      run: |
+        pytest tests/test_api.py
