@@ -1,7 +1,7 @@
 services:
   # A Docker web service
   - type: web
-    name: 
+    name: shotapi-render
     runtime: python
     plan: free
     autoDeploy: true
