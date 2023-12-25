@@ -16,11 +16,11 @@ async def process_screenshot(request: ScreenshotRequest) -> Any:
             status_code=500, detail=f"Error taking screenshot: {e}"
         )
 
-    # If the request type is base64, return the base64 encoded screenshot
-    if request.type == "base64":
+    # If the request format is base64, return the base64 encoded screenshot
+    if request.format == "base64":
         return screenshot_base64
-    # If the request type is cloudinary, upload the screenshot to Cloudinary and return the cloudinary response
-    elif request.type == "cloudinary":
+    # If the request format is cloudinary, upload the screenshot to Cloudinary and return the cloudinary response
+    elif request.format == "cloudinary_url":
         cloudinary_credentials = {
             # The cloudinary credentials are passed in as part of the request
             "cloud_name": request.cloudinary_cloud_name,

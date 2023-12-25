@@ -1,6 +1,6 @@
 # ShotAPI
 
-ShotAPI is a fast and reliable screenshot capture API, built using Pyppeteer. It allows users to easily capture screenshots of web pages and retrieve them in various formats. 
+ShotAPI is a fast and reliable screenshot capture API, built on top of Pyppeteer. It allows users to easily capture screenshots of web pages and retrieve them in various formats. 
 
 ## Features
 
@@ -52,6 +52,10 @@ curl -X 'POST' \
         "cloudinary_api_secret": "your_api_secret"
       }'
 ```
+
+### Response
+
+The API will return the screenshot as a base64 encoded string or a standard Cloudinary response including secure_url, depending on the specified format.
 
 ## Error Handling
 
