@@ -3,3 +3,4 @@ uvicorn
 pyppeteer
 cloudinary
 python-dotenv
+selenium

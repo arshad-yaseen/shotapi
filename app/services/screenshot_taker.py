@@ -1,25 +1,21 @@
-from pyppeteer import launch
-
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 async def take_screenshot(url: str):
-    browser = None
+    options = Options()
+    options.add_argument('--no-sandbox')
+    options.add_argument('--window-size=1280,800')
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+
+    driver = webdriver.Chrome(options=options)
+    
     try:
-        browser = await launch(
-            headless=True,
-            args=[
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--disable-gpu",
-                "--disable-software-rasterizer",
-                "--disable-setuid-sandbox",
-            ],
-        )
-        page = await browser.newPage()
-        await page.goto(url)
-        screenshot = await page.screenshot()
-        return screenshot
+        driver.get(url)
+        screenshot_base64 = driver.get_screenshot_as_base64()
+        return screenshot_base64
     except Exception as e:
         raise e
     finally:
-        if browser:
-            await browser.close()
+        if driver:
+            driver.quit()
