@@ -8,6 +8,5 @@ pytest
 requests
 validators
 black
-mypy
 flake8
 bandit
