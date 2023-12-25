@@ -16,7 +16,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pylint flake8 black mypy
+        pip install -r requirements.txt
 
     - name: Run Flake8
       run: flake8 **/*.py
