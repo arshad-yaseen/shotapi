@@ -4,11 +4,7 @@ from app.services.screenshot_service import process_screenshot
 
 router = APIRouter()
 
-@router.get("/")
-async def root():
-    return 'Hello from the screenshot service!'
-
-@router.post("/")
+@router.post("/take")
 async def get_screenshot(request: ScreenshotRequest = Body(...)):
     try:
         return await process_screenshot(request)

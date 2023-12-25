@@ -1,7 +1,11 @@
 from fastapi import FastAPI
-from app.api.endpoints import screenshot
+from app.api.endpoints import take
+from fastapi import APIRouter
 
 app = FastAPI()
 
-# Include the routers from different endpoints
-app.include_router(screenshot.router)
+@app.get("/")
+async def root():
+    return {'message': 'Hello from ShotAPI!'}
+
+app.include_router(take.router)
