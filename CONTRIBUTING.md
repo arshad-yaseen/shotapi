@@ -24,7 +24,6 @@ cd shotapi
 ./start.sh
 ```
 
-
 ## Reporting Bugs
 
 If you find a bug, please create an issue on GitHub detailing:

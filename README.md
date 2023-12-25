@@ -1,6 +1,6 @@
 # ShotAPI
 
-ShotAPI is a fast and reliable screenshot capture API, built on top of Pyppeteer. It allows users to easily capture screenshots of web pages and retrieve them in various formats. 
+ShotAPI is a fast and reliable screenshot capture API, built on top of Selenium. It allows users to easily capture screenshots of web pages and retrieve them in various formats. 
 
 ## Features
 
