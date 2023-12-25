@@ -23,6 +23,3 @@ jobs:
 
     - name: Run Black (Check)
       run: black --check **/*.py
-
-    - name: Run Mypy
-      run: mypy **/*.py

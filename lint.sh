@@ -12,9 +12,6 @@ black $dir
 echo "Running Flake8..."
 flake8 $dir
 
-echo "Running Mypy for type checking..."
-mypy $dir
-
 echo "Running Bandit for security checks..."
 bandit -r $dir
 

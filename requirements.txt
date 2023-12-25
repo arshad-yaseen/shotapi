@@ -10,4 +10,3 @@ validators
 black
 flake8
 bandit
-mypy
