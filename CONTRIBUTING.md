@@ -54,6 +54,12 @@ We actively welcome your pull requests! Here's how to do it:
 
 Please adhere to standard Python coding conventions. This helps in maintaining the readability and maintainability of the code.
 
+To lint and format your code, run:
+
+```bash
+./lint.sh
+```
+
 ## Questions or Suggestions?
 
 Feel free to create an issue on GitHub if you have any questions or suggestions to improve the contributing process.
