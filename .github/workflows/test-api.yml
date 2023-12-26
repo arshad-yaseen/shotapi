@@ -18,10 +18,6 @@ jobs:
       run: |
         ./start.sh &
         sleep 10
-    
-    - name: Install Dependencies
-      run: |
-        pip install -r requirements.txt
 
     - name: Run API Tests
       run: |
