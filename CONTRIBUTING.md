@@ -18,8 +18,14 @@ git clone https://github.com/arshadyaseen/shotapi.git
 cd shotapi
 ```
 
-3. **Run the `start.sh` script** to set up and start the API:
+1. **Run the script** to set up and start the API:
 
+Windows:
+```bash
+./start.bat
+```
+
+Linux/MacOS:
 ```bash
 ./start.sh
 ```
@@ -56,6 +62,12 @@ Please adhere to standard Python coding conventions. This helps in maintaining t
 
 To lint and format your code, run:
 
+Windows:
+```bash
+./lint.bat
+```
+
+Linux/MacOS:
 ```bash
 ./lint.sh
 ```

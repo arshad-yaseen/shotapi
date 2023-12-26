@@ -13,6 +13,6 @@ echo "Running Flake8..."
 flake8 $dir
 
 echo "Running Bandit for security checks..."
-bandit -r $dir
+bandit -c pyproject.toml -r $dir
 
 echo "Linting and formatting completed successfully!"

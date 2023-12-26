@@ -1,2 +1,24 @@
 [tool.black]
 line-length = 79
+
+[tool.bandit]
+exclude_dirs = [
+    "tests",
+    "venv",
+    ".venv",
+    ".git",
+    ".github",
+    ".vscode",
+]
+
+[tool.flake8]
+max-line-length = 120
+exclude = [
+    ".git",
+    "__pycache__",
+    "venv",
+    ".venv",
+    ".vscode",
+    ".github",
+    "tests",
+]
