@@ -8,7 +8,10 @@ async def take_screenshot(url: str):
     # Standard laptop resolution
     options.add_argument("--window-size=1280,800")
     options.add_argument("--headless")
+    options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--hide-scrollbars")
 
     driver = webdriver.Chrome(options=options)
 
