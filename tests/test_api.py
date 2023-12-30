@@ -28,9 +28,9 @@ def test_response_time():
 
 
 def test_rate_limiting():
-    # The rate limit is set at 6 requests per minute
-    # Make 7 requests to test the rate limiting
-    for _ in range(7):
+    # The rate limit is set at 10 requests per minute
+    # Make 11 requests to test the rate limiting
+    for _ in range(11):
         response = requests.post(API_URL, json={"url": "http://example.com"})
 
     # The last request should be rate limited
