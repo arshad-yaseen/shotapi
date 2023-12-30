@@ -18,4 +18,4 @@ jobs:
       run: pip install bandit
 
     - name: Run Bandit Security Check
-      run: bandit -r **/*.py
+      run: bandit -c pyproject.toml -r .
