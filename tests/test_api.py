@@ -31,7 +31,7 @@ def test_rate_limiting():
     # The rate limit is set at 10 requests per minute
     # Make 11 requests to test the rate limiting
     for _ in range(11):
-        response = requests.post(API_URL, json={"url": "http://example.com"})
+        response = requests.post(API_URL, json={"url": "http://example.com"}, timeout=20)
 
     # The last request should be rate limited
     assert response.status_code == 429  # nosec
