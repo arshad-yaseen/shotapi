@@ -57,6 +57,10 @@ curl -X 'POST' \
 
 The API will return the screenshot as a base64 encoded string or a standard Cloudinary response including secure_url, depending on the specified format.
 
+### Rate Limiting
+
+The API is rate limited to 10 requests per minute per IP address. If you exceed this limit, you will receive a `429 Too Many Requests` response.
+
 ## Error Handling
 
 The API uses standard HTTP response codes to indicate the success or failure of requests. In case of an error, the response includes a descriptive message.
