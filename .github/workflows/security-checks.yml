@@ -15,7 +15,7 @@ jobs:
         python-version: '3.8'
 
     - name: Install Bandit
-      run: pip install bandit
+      run: pip install bandit[toml]
 
     - name: Run Bandit Security Check
       run: bandit -c pyproject.toml -r .
