@@ -4,58 +4,54 @@ ShotAPI is a fast and reliable screenshot capture API, built on top of Selenium.
 
 ## Features
 
-- Capture full-page screenshots of web pages.
-- Simple and intuitive REST API interface.
-- Supports returning screenshots in different formats.
+- Capture screenshots of web pages.
+- Customize the format of the screenshot.
+- Support for full-page captures.
+- Mobile view and dark mode options.
+- Execute custom JavaScript code.
+- Specify the user agent.
+- Introduce a delay before capturing.
 
 ## Using the API
 
-To capture a screenshot, send a `POST` request to the API's endpoint.
+To capture a screenshot, send a `GET` request to the API's endpoint:
 
 ```bash
-POST https://shotapi.arshadyaseen.com
+GET http://localhost:8000/take
 ```
-### Request Body Parameters
+### Request Parameters
 
-| Parameter | Description                              | Required | Default |
-|-----------|------------------------------------------|----------|---------|
-| `url`     | Web page URL to screenshot               | Yes      | -       |
-| `format`  | Screenshot format (`base64` or `cloudinary_url`) | No       | `base64` |
+| Parameter          | Description                                                 | Required | Default |
+|--------------------|-------------------------------------------------------------|----------|---------|
+| `url`              | URL of the web page to capture                              | Yes      | -       |
+| `format`           | Screenshot format (`base64` or `png`)                       | No       | `base64` |
+| `width`            | Width of the browser window (in pixels)                     | No       | 1280       |
+| `height`           | Height of the browser window (in pixels)                    | No       | 800       |
+| `full_page`        | Capture the full page (true or false)                       | No       | false   |
+| `mobile`           | Enable mobile view (true or false)                          | No       | false   |
+| `dark_mode`        | Enable dark mode (true or false)                            | No       | false   |
+| `delay`            | Delay before capturing the screenshot (in seconds)          | No       | 0       |
+| `custom_js`        | Custom JavaScript code to execute on the page              | No       | -       |
+| `user_agent`       | Specify the User-Agent header for the request              | No       | -       |
 
-For `cloudinary_url` format, additional parameters are required:
-- `cloudinary_cloud_name`: Your Cloudinary cloud name.
-- `cloudinary_api_key`: Your Cloudinary API key.
-- `cloudinary_api_secret`: Your Cloudinary API secret.
 
 ### Example Requests
 
-Using `base64` format:
+Capture a Full-Page Screenshot in PNG Format:
 
 ```bash
-curl -X 'POST' \
-  'https://shotapi.arshadyaseen.com' \
-  -H 'Content-Type: application/json' \
-  -d '{"url": "https://example.com", "format": "base64"}'
+curl "https://shotapi.arshadyaseen.com/take?url=https://stripe.com&format=png&full_page=true" -o screenshot.png
 ```
 
-Using `cloudinary_url` format:
+Capture a Mobile View Screenshot with Dark Mode Enabled:
 
 ```bash
-curl -X 'POST' \
-  'https://shotapi.arshadyaseen.com' \
-  -H 'Content-Type: application/json' \
-  -d '{
-        "url": "https://example.com",
-        "format": "cloudinary_url",
-        "cloudinary_cloud_name": "your_cloud_name",
-        "cloudinary_api_key": "your_api_key",
-        "cloudinary_api_secret": "your_api_secret"
-      }'
+curl "https://shotapi.arshadyaseen.com/take?url=https://stripe.com&mobile=true&dark_mode=true"
 ```
 
 ### Response
 
-The API will return the screenshot as a base64 encoded string or a standard Cloudinary response including secure_url, depending on the specified format.
+The API will return the screenshot either as a base64 encoded string or as a PNG image, depending on the specified format.
 
 ### Rate Limiting
 

@@ -1,35 +1,49 @@
-from app.models.payload import ScreenshotRequest
 from app.services.screenshot_taker import take_screenshot
-from app.services.uploader import upload_to_cloudinary
 from fastapi import HTTPException
 import validators
 from typing import Any
+from fastapi.responses import StreamingResponse
+from io import BytesIO
 
 
-async def process_screenshot(request: ScreenshotRequest) -> Any:
+async def process_screenshot(
+    url: str,
+    format: str,
+    width: int = None,
+    height: int = None,
+    full_page: bool = False,
+    mobile: bool = False,
+    dark_mode: bool = False,
+    delay: int = 0,
+    custom_js: str = None,
+    user_agent: str = None,
+) -> Any:
     # Validate the URL
-    validate_url(request.url)
+    validate_url(url)
     try:
-        screenshot_base64 = await take_screenshot(request.url)
+        screenshot = await take_screenshot(
+            url,
+            width,
+            height,
+            full_page,
+            mobile,
+            dark_mode,
+            delay,
+            custom_js,
+            user_agent,
+        )
     except Exception as e:
         raise HTTPException(
             status_code=500, detail=f"Error taking screenshot: {e}"
         )
 
     # If the request format is base64, return the base64 encoded screenshot
-    if request.format == "base64":
-        return screenshot_base64
-    # If the request format is cloudinary, upload the screenshot to Cloudinary and return the cloudinary response
-    elif request.format == "cloudinary_url":
-        cloudinary_credentials = {
-            # The cloudinary credentials are passed in as part of the request
-            "cloud_name": request.cloudinary_cloud_name,
-            "api_key": request.cloudinary_api_key,
-            "api_secret": request.cloudinary_api_secret,
-        }
-        return await upload_to_cloudinary(
-            screenshot_base64=screenshot_base64,
-            cloudinary_credentials=cloudinary_credentials,
+    if format == "base64":
+        return screenshot["base64"]
+    # If the request format is png, return the png screenshot
+    elif format == "png":
+        return StreamingResponse(
+            BytesIO(screenshot["png"]), media_type="image/png"
         )
 
 
