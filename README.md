@@ -43,10 +43,10 @@ Capture a Full-Page Screenshot in PNG Format:
 curl "https://shotapi.arshadyaseen.com/take?url=https://stripe.com&format=png&full_page=true" -o screenshot.png
 ```
 
-Capture a Mobile View Screenshot with Dark Mode Enabled:
+Capture a Screenshot of the Mobile View:
 
 ```bash
-curl "https://shotapi.arshadyaseen.com/take?url=https://stripe.com&mobile=true&dark_mode=true"
+curl "https://shotapi.arshadyaseen.com/take?url=https://github.com&mobile=true" -o screenshot.png
 ```
 
 ### Response

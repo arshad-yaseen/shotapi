@@ -20,9 +20,9 @@ async def get_screenshot(
     format: str = Query(
         "base64", description="The format of the screenshot (base64 or png)"
     ),
-    width: int = Query(None, description="Width of the screenshot (optional)"),
+    width: int = Query(1280, description="Width of the screenshot (optional)"),
     height: int = Query(
-        None, description="Height of the screenshot (optional)"
+        800, description="Height of the screenshot (optional)"
     ),
     full_page: bool = Query(
         False, description="Capture full page (default: False)"
@@ -63,5 +63,6 @@ async def get_screenshot(
         )
     except Exception as e:
         raise HTTPException(
-            status_code=500, detail=f"Error processing screenshot: {str(e)}"
+            status_code=e.status_code if hasattr(e, "status_code") else 500,
+            detail=f"Error processing screenshot: {str(e)}",
         )

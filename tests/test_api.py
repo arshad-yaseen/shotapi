@@ -21,6 +21,14 @@ def test_png_screenshot_capture():
     assert response.headers["Content-Type"] == "image/png"  # nosec
 
 
+def check_invalid_url():
+    response = requests.get(
+        API_URL,
+        params={"url": "invalid", "format": "base64"},
+    )
+    assert response.status_code == 400  # nosec
+
+
 def test_response_time():
     response = requests.get(
         API_URL,
