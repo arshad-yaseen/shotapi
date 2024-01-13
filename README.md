@@ -46,7 +46,7 @@ curl "https://shotapi.arshadyaseen.com/take?url=https://github.com&format=png&fu
 Capture a Screenshot of the Mobile View:
 
 ```bash
-curl "https://shotapi.arshadyaseen.com/take?url=https://vercel.com&mobile=true" -o screenshot.png
+curl "https://shotapi.arshadyaseen.com/take?url=https://vercel.com&format=png&mobile=true" -o screenshot.png
 ```
 
 ### Response
