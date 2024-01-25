@@ -37,6 +37,12 @@ GET http://localhost:8000/take
 
 ### Example Requests
 
+Capture normal screenshot:
+
+```bash
+curl "https://shotapi.arshadyaseen.com/take?url=https://stripe.com&format=png" -o screenshot.png
+```
+
 Capture a Full-Page Screenshot in PNG Format:
 
 ```bash

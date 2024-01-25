@@ -1,7 +1,6 @@
 fastapi
 uvicorn
 pyppeteer
-cloudinary
 python-dotenv
 selenium
 pytest
