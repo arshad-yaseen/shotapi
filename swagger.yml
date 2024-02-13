@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  title: ShotAPI
+  description: A fast and reliable screenshot capture API, built on top of Selenium.
+  version: 1.0.0
+  license:
+    name: MIT
+    url: https://github.com/arshad-yaseen/shotapi?tab=MIT-1-ov-file
+
+servers:
+  - url: https://shotapi.arshadyaseen.com
+  - url: http://localhost:8000
+
+paths:
+  /take:
+    get:
+      summary: Capture a screenshot of a web page
+      description: Send a GET request to capture a screenshot of the specified web page.
+      parameters:
+        - name: url
+          in: query
+          description: URL of the web page to capture.
+          required: true
+          schema:
+            type: string
+        - name: format
+          in: query
+          description: Screenshot format (`base64` or `png`).
+          schema:
+            type: string
+            enum: [base64, png]
+            default: base64
+        - name: width
+          in: query
+          description: Width of the browser window (in pixels).
+          schema:
+            type: integer
+            default: 1280
+        - name: height
+          in: query
+          description: Height of the browser window (in pixels).
+          schema:
+            type: integer
+            default: 800
+        - name: full_page
+          in: query
+          description: Capture the full page (true or false).
+          schema:
+            type: boolean
+            default: false
+        - name: mobile
+          in: query
+          description: Enable mobile view (true or false).
+          schema:
+            type: boolean
+            default: false
+        - name: dark_mode
+          in: query
+          description: Enable dark mode (true or false).
+          schema:
+            type: boolean
+            default: false
+        - name: delay
+          in: query
+          description: Delay before capturing the screenshot (in seconds).
+          schema:
+            type: integer
+            default: 0
+        - name: custom_js
+          in: query
+          description: Custom JavaScript code to execute on the page.
+          schema:
+            type: string
+        - name: user_agent
+          in: query
+          description: Specify the User-Agent header for the request.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Screenshot captured successfully.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request (invalid parameters).
+        '429':
+          description: Too Many Requests - Rate limit exceeded.
+        '500':
+          description: Internal server error.
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
