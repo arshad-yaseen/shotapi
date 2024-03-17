@@ -17,7 +17,7 @@ ShotAPI is a fast and reliable screenshot capture API, built on top of Selenium.
 To capture a screenshot, send a `GET` request to the API's endpoint:
 
 ```bash
-GET http://localhost:8000/take
+GET http://shotapi.arshadyaseen.com/take
 ```
 ### Request Parameters
 
