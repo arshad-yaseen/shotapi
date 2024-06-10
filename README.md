@@ -17,7 +17,7 @@ ShotAPI is a fast and reliable screenshot capture API, built on top of Selenium.
 To capture a screenshot, send a `GET` request to the API's endpoint:
 
 ```bash
-GET https://shotapi.arshadyaseen.com/take
+GET http://localhost:3000/take
 ```
 ### Request Parameters
 
@@ -40,19 +40,19 @@ GET https://shotapi.arshadyaseen.com/take
 Capture normal screenshot:
 
 ```bash
-curl "https://shotapi.arshadyaseen.com/take?url=https://stripe.com&format=png" -o screenshot.png
+curl "http://localhost:3000/take?url=https://stripe.com&format=png" -o screenshot.png
 ```
 
 Capture a Full-Page Screenshot in PNG Format:
 
 ```bash
-curl "https://shotapi.arshadyaseen.com/take?url=https://github.com&format=png&full_page=true" -o screenshot.png
+curl "http://localhost:3000/take?url=https://github.com&format=png&full_page=true" -o screenshot.png
 ```
 
 Capture a Screenshot of the Mobile View:
 
 ```bash
-curl "https://shotapi.arshadyaseen.com/take?url=https://vercel.com&format=png&mobile=true" -o screenshot.png
+curl "http://localhost:3000/take?url=https://vercel.com&format=png&mobile=true" -o screenshot.png
 ```
 
 ### Response
